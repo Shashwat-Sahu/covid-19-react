@@ -149,7 +149,9 @@ const Body_html = () => {
             }
         }
     }
-
+    document.addEventListener('scroll', function(e) {
+        document.getElementById('IN-DATA').style.display = 'none'
+    })
 
     return (
         <>
@@ -721,6 +723,7 @@ const Body_html = () => {
                                     <select className="form-control justify-content-center" onChange={(e) => {
                                         var data = JSON.parse(e.target.value)
                                         data['districtData'] = state[data.index].districtData
+                                        data['state']=state[data.index].state
                                         setStatus(data)
                                     }}>
                                         {
@@ -773,13 +776,15 @@ const Body_html = () => {
                                 </div>
                                 <div className="row mt-2 ">
                                     <div className="col-sm-12 mt-2 mx-auto">
+                                        <h3 style={{textAlign:'center'}} className='text-primary'>{status.state}</h3>
                                         <table class="table table-dark table-responsive-md">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">District</th>
-                                                    <th scope="col">Confirmed</th>
-                                                    <th scope="col">Recovered</th>
-                                                    <th scope="col">Deceased</th>
+                                                    <th scope="col" style={{textAlign:'center'}}>District</th>
+                                                    <th scope="col" style={{textAlign:'center'}}>Confirmed</th>
+                                                    <th scope="col" style={{textAlign:'center'}}>Recovered</th>
+                                                    <th scope="col" style={{textAlign:'center'}}>Deceased</th>
+                                                    <th scope='col' style={{textAlign:'center'}}>Notes</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -787,10 +792,11 @@ const Body_html = () => {
                                                     status.districtData.map((district, index) => {
                                                         return (
                                                             <tr>
-                                                                <th scope="row">{district['district']}</th>
-                                                                <td className='text-primary'>{district['confirmed']}</td>
-                                                                <td className='text-success'>{district['recovered']}</td>
-                                                                <td className='text-danger'>{district['deceased']}</td>
+                                                                <th scope="row" style={{textAlign:'center'}}>{district['district']}</th>
+                                                                <td className='text-primary'style={{textAlign:'center'}}>{district['confirmed']}</td>
+                                                                <td className='text-success'style={{textAlign:'center'}}>{district['recovered']}</td>
+                                                                <td className='text-danger'style={{textAlign:'center'}}>{district['deceased']}</td>
+                                                                <td className='text-info'style={{textAlign:'center'}}>{district['notes']?district['notes']:'-'}</td>
                                                             </tr>
                                                         )
                                                     })
