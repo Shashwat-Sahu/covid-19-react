@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Chart } from 'chart.js'
 import './style.css'
+import axios from 'axios';
 const Body_html = () => {
     const [country, setCountry] = useState([])
     const [state, setState] = useState([])
@@ -106,8 +107,9 @@ const Body_html = () => {
     }
 
     useEffect(() => {
-        fetch("https://api.covid19india.org/state_district_wise.json").then(res => res.json()).then(data => {
-
+        axios.get("https://data.covid19india.org/state_district_wise.json").then(data => {
+            data=data.data
+            console.log(data)
             var states = []
             for (var state in data) {
                 var districts = []
