@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Chart } from 'chart.js'
 import './style.css'
 import axios from 'axios';
+import {Link as Scroll} from 'react-scroll'
 const Body_html = () => {
     const [country, setCountry] = useState([])
     const [state, setState] = useState([])
@@ -164,10 +165,10 @@ const Body_html = () => {
                 <div className="row">
                     <div className="col-sm-2 border-right border-bottom">
                         <ul className="navbar nav nav-pills" id="change">
-                            <li className="nav-item mb-1"><a className="nav-link active" href="#stats">Stats</a></li>
-                            <li className="nav-item mb-1"><a className="nav-link" href="#region">States and Union Territory Data</a></li>
-                            <li className="nav-item mb-1"><a className="nav-link" href="#Measures">Measures</a></li>
-                            <li className="nav-item mb-1"><a className="nav-link" href="#awareness">Awareness</a></li>
+                        <li className="nav-item mb-1"><a href="#" className="nav-link active"><Scroll to="stats" smooth={true} >Stats</Scroll></a></li>
+                            <li className="nav-item mb-1"><a href="#" className="nav-link" ><Scroll to="region" smooth={true} >States and Union Territory Data</Scroll></a></li>
+                            <li className="nav-item mb-1"><a href="#" className="nav-link" ><Scroll to="Measures" smooth={true}>Measures</Scroll></a></li>
+                            <li className="nav-item mb-1"><a href="#" className="nav-link" ><Scroll to="awareness" smooth={true}>Awareness</Scroll></a></li>
 
                         </ul></div>
                     <div className="col-sm-8 border-right">
