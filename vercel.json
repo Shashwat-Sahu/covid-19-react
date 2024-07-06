@@ -1,0 +1,11 @@
+{
+    "version": 2,
+    "name": "covid-19",
+    "builds": [
+      {
+          "src": "./build",
+          "use": "@vercel/static"
+      }
+  ]
+
+}
